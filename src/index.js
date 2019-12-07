@@ -84,7 +84,8 @@ export default class ModalFilterPicker extends Component {
       placeholderText,
       placeholderTextColor,
       filterTextInputContainerStyle,
-      filterTextInputStyle
+      filterTextInputStyle,
+      filterTextInputProps,
     } = this.props
 
     const filter = (!showFilter) ? null : (
@@ -98,7 +99,9 @@ export default class ModalFilterPicker extends Component {
           underlineColorAndroid={androidUnderlineColor}
           placeholderTextColor={placeholderTextColor}
           placeholder={placeholderText}
-          style={filterTextInputStyle || styles.filterTextInput} />
+          style={filterTextInputStyle || styles.filterTextInput}
+          {...filterTextInputProps}
+      />
       </View>
     )
 
@@ -181,7 +184,8 @@ export default class ModalFilterPicker extends Component {
     const {
       cancelButtonStyle,
       cancelButtonTextStyle,
-      cancelButtonText
+      cancelButtonText,
+      cancelButtonTextProps,
     } = this.props
 
     return (
@@ -189,7 +193,7 @@ export default class ModalFilterPicker extends Component {
         activeOpacity={0.7}
         style={cancelButtonStyle || styles.cancelButton}
       >
-        <Text style={cancelButtonTextStyle || styles.cancelButtonText}>{cancelButtonText}</Text>
+        <Text style={cancelButtonTextStyle || styles.cancelButtonText} {...cancelButtonTextProps}>{cancelButtonText}</Text>
       </TouchableOpacity>
     )
   }
@@ -234,9 +238,11 @@ ModalFilterPicker.propTypes = {
   listViewProps: PropTypes.object,
   filterTextInputContainerStyle: PropTypes.any,
   filterTextInputStyle: PropTypes.any,
+  filterTextInputProps: PropTypes.any,
   cancelContainerStyle: PropTypes.any,
   cancelButtonStyle: PropTypes.any,
   cancelButtonTextStyle: PropTypes.any,
+  cancelButtonTextProps: PropTypes.any,
   titleTextStyle: PropTypes.any,
   overlayStyle: PropTypes.any,
   listContainerStyle: PropTypes.any,
